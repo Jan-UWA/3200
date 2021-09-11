@@ -1,0 +1,196 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WEC Performance Metrics Comparator</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="container">
+      <div id="logo">
+        <img src="logo.png" alt="" srcset="">
+      </div>
+      <div id="menu">
+        <div class="menu-item"><a href="#">About Us</a></div>
+        <div class="menu-item"><a href="#">Contact</a></div>
+      </div>
+    </div>
+  </nav>
+  <header>
+    <img src="bg.jpg" alt="">
+  </header>
+  <div class="container" style="position: relative;">
+    <div id="box">
+      <div id="box-header">
+        <h1>WEC Performance Metrics Comparator</h1>
+      </div>
+      <div id="box-content">
+        <div class="md-stepper-horizontal orange">
+          <div class="md-step active">
+            <div class="md-step-circle"><span>1</span></div>
+            <div class="md-step-title">Insert File</div>
+            <div class="md-step-bar-left"></div>
+            <div class="md-step-bar-right"></div>
+          </div>
+          <div class="md-step">
+            <div class="md-step-circle"><span>2</span></div>
+            <div class="md-step-title">Step 2</div>
+            <div class="md-step-bar-left"></div>
+            <div class="md-step-bar-right"></div>
+          </div>
+          <div class="md-step">
+            <div class="md-step-circle"><span>3</span></div>
+            <div class="md-step-title">Step 3</div>
+            <div class="md-step-bar-left"></div>
+            <div class="md-step-bar-right"></div>
+          </div>
+          <div class="md-step">
+            <div class="md-step-circle"><span>4</span></div>
+            <div class="md-step-title">Step 4</div>
+            <div class="md-step-bar-left"></div>
+            <div class="md-step-bar-right"></div>
+          </div>
+        </div>
+
+        <div class="layout" style="margin: 0 auto;">
+          <input name="nav" type="radio" class="nav home-radio" id="home" checked="checked" />
+          <div class="page home-page" id="step1">
+            <div class="page-contents">
+              <div class="file-upload">
+                Upload an image of the plot you want to save to our database
+                <!--<form action="digitise.html" method="post"> -->
+                  <!-- <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add File</button> -->
+
+                  <div class="image-upload-wrap">
+                    <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/" />
+                    <div class="drag-text">
+                      <h3 class="elementor-heading-title elementor-size-default">Drag and drop a file or click here to upload file</h3>
+                    </div>
+                  </div>
+                  <div class="file-upload-content">
+                    <!-- <img class="file-upload-image" src="#" alt="your image" /> -->
+                    <span class="image-title"></span> Uploaded<br><br>
+                    <div class="image-title-wrap">
+                      <button type="reset" onclick="removeUpload()" class="btn remove-image">Remove File</button>
+                      <button type="submit" class= "btn normalise-image">Save File</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+            </div>
+          </div>
+          <label class="nav" for="home">
+                        <span>
+                            Image File
+                        </span>
+                    </label>
+
+          <input name="nav" type="radio" class="digitise-radio" id="wpd" />
+          <div class="page home-page">
+            <div id="digitised-values">
+              <div >
+                <p>Once you have saved the digitised values then upload them as a CSV/TXT file </p>
+                <iframe src="https://apps.automeris.io/wpd/" class="webplot"></iframe>
+              </div>
+            </div>
+          </div>
+          <label class="nav" for="wpd">
+                        <span>
+                            Digitise
+                        </span>
+                    </label>
+
+          <input name="nav" type="radio" class="about-radio" id="about" />
+          <div class="page about-page">
+            <div class="page-contents">
+              <div class="file-upload">
+                Upload the digitised values 
+                <!-- <form action="process.html" method="post"> -->
+                  <!-- <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add File</button> -->
+
+                  <div class="image-upload-wrap-csv">
+                    <input class="file-upload-input" type='file' onchange="readURLCSV(this);" accept="image/" />
+                    <div class="drag-text">
+                      <h3 class="elementor-heading-title elementor-size-default">Drag and drop a file or click here to upload file</h3>
+                    </div>
+                  </div>
+                  <div class="file-upload-content-csv">
+                    <!-- <img class="file-upload-image" src="#" alt="your image" /> -->
+                    <span class="image-title-csv"></span> Uploaded<br><br>
+                    <div class="image-title-wrap">
+                      <button type="reset" onclick="removeUploadCSV()" class="btn remove-image">Remove File</button>
+                      <button type="submit" onclick="digitiseUpload()" class="btn normalise-image" class="btn">Next Step</button>
+                    </div>
+                  </div>
+                <!-- </form> -->
+              </div>
+            </div>
+          </div>
+          <label class="nav" for="about">
+                        <span>
+                            CSV/TXT File
+                        </span>
+                    </label>
+
+          <div class="is-hidden page" id="step2">
+            <div class="input-page">
+              <div id="q1">
+                <p>Has the standard data already been calculated?</p>
+                <button type="submit" class="btn normalise-image" id="yes">Yes</button>
+                <button type="submit" onclick="standardise()" class="btn normalise-image" id="no">No</button>
+              </div>
+
+              <div id="q2" class="is-hidden">
+                <label for="char-dim">Please enter the characteristic dimensions in metres:</label>
+                <input type="text" id="char-dim" name="char-dim">
+                <label for="SA">Please enter the Submerged Surface Area in square metres:</label>
+                <input type="text" id="SA" name="SA">
+                <label for="water-dep">Please enter water depth in metres.<br> If water is deep then enter any negative number:</label>
+                <input type="text" id="water-dep" name="water-dep"><br>
+                <input type="submit" onclick="get_x()" value="Submit">
+              </div>
+
+              <div id="q3" class="is-hidden">
+                <p>Select one of the given units of x axis</p>
+                <!--<form> -->
+                  <input type="radio" id="period" name="x_values" value="period">
+                  <label for="period">Period (s)</label>
+                  <input type="radio" id="frequency" name="x_values" value="frequency">
+                  <label for="frequency">Frequency (1/s)</label>
+                  <input type="radio" id="rot_freq" name="x_values" value="rotational_frequency">
+                  <label for="rot_freq">Rotational Frequency (rad/s)</label>
+                  <input type="radio" id="k*x" name="x_values" value="k*x">
+                  <label for="k*x">k*x</label>
+                  <input type="radio" id="T/T0" name="x_values" value="T/T0">
+                  <label for="T/T0">T/T0</label>
+                  <input type="radio" id="lambda " name="x_values" value="lambda ">
+                  <label for="lambda ">Lambda/L </label>
+                  <button type="submit" onclick="x_axis()" class="btn normalise-image">Next</button>
+                <!--</form> -->
+              </div>
+
+              <div id="q3.1" class="is-hidden">
+                <label for="enter_x">Please enter the value of x (e.g. water nepth, width, radius) that has been mutiplied by wavenumber, k:</label>
+                <input type="text" id="enter_x" name="enter_x">
+              </div>
+
+              <div id="q4" class="is-hidden">
+                <p>y-axis</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+
+</html>

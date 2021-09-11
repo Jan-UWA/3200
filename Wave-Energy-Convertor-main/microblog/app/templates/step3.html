@@ -1,0 +1,205 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WEC Performance Metrics Comparator</title>
+  <link rel="stylesheet" href="../static/CSS/style.css">
+  <script src="../static/JS/jquery-3.6.0.min.js"></script>
+
+</head>
+
+<body>
+  <nav>
+    <div class="container flex flex-row space-between">
+      <div id="logo">
+        <img src="../static/image/logo.png" alt="" srcset="">
+      </div>
+      <div id="logo-2">
+        <img src="../static/image/WERC_logo_final.png" alt="">
+      </div>
+    </div>
+  </nav>
+  <header>
+    <img src="../static/image/bg.jpg" alt="">
+  </header>
+  <div class="container" style="position: relative;">
+    <div id="box">
+      <div id="box-header">
+        <h1>Wave Energy Converter Performance Metric Comparator</h1>
+      </div>
+      <div id="box-content">
+        <div class="md-stepper-horizontal orange">
+          <div class="md-step active">
+            <div class="md-step-circle"><span>1</span></div>
+            <!-- <div class="md-step-title">Insert File</div> -->
+            <div class="md-step-bar-left"></div>
+            <div class="md-step-bar-right"></div>
+          </div>
+          <div class="md-step active">
+            <div class="md-step-circle"><span>2</span></div>
+            <!-- <div class="md-step-title">Step 2</div> -->
+            <div class="md-step-bar-left"></div>
+            <div class="md-step-bar-right"></div>
+          </div>
+          <div class="md-step active">
+            <div class="md-step-circle"><span>3</span></div>
+            <!-- <div class="md-step-title">Step 3</div> -->
+            <div class="md-step-bar-left"></div>
+            <div class="md-step-bar-right"></div>
+          </div>
+          <div class="md-step">
+            <div class="md-step-circle"><span>4</span></div>
+            <!-- <div class="md-step-title">Step 4</div> -->
+            <div class="md-step-bar-left"></div>
+            <div class="md-step-bar-right"></div>
+          </div>
+          <div class="md-step">
+            <div class="md-step-circle"><span>5</span></div>
+            <!-- <div class="md-step-title">Step 4</div> -->
+            <div class="md-step-bar-left"></div>
+            <div class="md-step-bar-right"></div>
+          </div>
+          <div class="md-step">
+            <div class="md-step-circle"><span>6</span></div>
+            <!-- <div class="md-step-title">Step 4</div> -->
+            <div class="md-step-bar-left"></div>
+            <div class="md-step-bar-right"></div>
+          </div>
+        </div>
+        <form action="" method='POST' enctype=multipart/form-data>
+        <div class="box-content-core">
+          <h2>Parameter Input</h2> <br>
+          <div class="danger-alert">
+            *Required Fields
+          </div>
+     
+            <div class="form-group flex flex-column">
+              <div class="flex flex-row">
+                <label for="technology">Technology <span class="red-text">*</span></label>&nbsp;<span class="red-text" id="error-technology"></span>
+              </div>
+              <input type="text" name="technology" id="technology" class="input-box">
+            </div>
+            <div class="form-group flex flex-column">
+              <div class="flex flex-row">
+                <label for="doi">DOI</label>&nbsp;<span class="red-text" id="error-doi"></span>
+              </div>
+              <input type="text" name="doi" id="doi" class="input-box">
+            </div>
+            <div class="form-group flex flex-column">
+              <div class="flex flex-row">
+                <label for="orientationsize">Orientation/Size Classification <span class="red-text">*</span></label>&nbsp;<span class="red-text" id="error-orientationsize"></span>
+              </div>
+              <select name="orientationsize" id="orientationsize" class="input-box">
+                <option name="orientationsize" value="">Select</option>
+                <option name="orientationsize" value="Point Absorber">Point Absorber</option>
+                <option name="orientationsize" value="Terminator">Terminator</option>
+                <option name="orientationsize" value="Attenuator">Attenuator</option>
+              </select>
+            </div>
+            <div class="form-group flex flex-column">
+              <div class="flex flex-row">
+                <label for="modemotion">Mode of Motion Classification <span class="red-text">*</span></label>&nbsp;<span class="red-text" id="error-modemotion"></span>
+              </div>
+              <select name="modemotion" id="modemotion" class="input-box">
+                <option  name="modemotion"  value="">Select</option>
+                <option  name="modemotion"  value="Pitch Only">Pitch Only</option>
+                <option  name="modemotion"  value="Heave Only">Heave Only</option>
+                <option  name="modemotion"  value="Surge Only">Surge Only</option>
+                <option  name="modemotion"  value="Pitch - Heave">Pitch - Heave</option>
+                <option  name="modemotion"  value="Heave - Surge">Heave - Surge</option>
+                <option  name="modemotion"  value="Pitch - Surge">Pitch - Surge</option>
+                <option  name="modemotion"  value="Pitch, Heave and Surge">Pitch, Heave and Surge</option>
+              </select>
+            </div>
+           
+            <div class="form-group flex flex-column">
+              <div class="flex flex-row">
+                <label for="method">Method <span class="red-text">*</span></label>&nbsp;<span class="red-text" id="error-method"></span>
+              </div>
+              <select name="method" id="method" class="input-box">
+                <option name="method" value="">Select</option>
+                <option name="method" value="Numerical modelling">Numerical modelling</option>
+                <option name="method" value="Model tests">Model tests</option>
+              </select>
+            </div>
+            <div class="form-group flex flex-column">
+              <div class="flex flex-row">
+                <label for="characteristic">Enter the characteristic dimension in metres</label>&nbsp;<span class="red-text" id="error-characteristic"></span>
+              </div>
+              <input type="text" name="characteristic" id="characteristic" class="input-box">
+            </div>
+            <div class="form-group flex flex-column">
+              <div class="flex flex-row">
+                <label for="submerged">Enter the submerged surface area in square metres <span class="red-text">*</span></label>&nbsp;<span class="red-text" id="error-submerged"></span>
+              </div>
+              <input type="text" name="submerged" id="submerged" class="input-box">
+            </div>
+            <div class="form-group flex flex-column">
+              <div class="flex flex-row">
+                <label for="depth">Enter water depth in metres (leave this field blank if water depth is unknown or if water is deep)</label>&nbsp;<span class="red-text" id="error-depth"></span>
+              </div>
+              <input type="text" name="depth" id="depth" class="input-box">
+            </div>
+
+            <div class="form-group flex flex-row space-between">
+              <div>&nbsp;</div>
+              <a href="/step4"></a> <button type="submit" class="btn btn-grey" disabled id="submit-btn">Next</button></a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer style="margin-top: 950px;">
+    <div class="flex flex-column">
+      <div id="footer-1">
+        <div class="container flex flex-row space-between">
+          <div id="footer-1-left" class="flex flex-row">
+            <div class="footer-link-box"><a href="https://marineresearch-gs.com/site-map/">Site Map</a></div>
+            <div class="footer-link-box"><a href="https://marineresearch-gs.com/privacy/">Privacy Policy</a></div>
+            <div class="footer-link-box"><a href="https://marineresearch-gs.com/terms-of-use/">Term of Use</a></div>
+          </div>
+          <div id="footer-1-right">
+            <a href="https://www.facebook.com/waveenergyRC/"><img src="../static/image/facebook-circular-logo.png" alt="" class="social-media"></a>
+            <a href="https://twitter.com/wave_energy_RC"><img src="../static/image/twitter.png" alt="" class="social-media"></a>
+            <a href="https://www.instagram.com/explore/locations/217581938793310/wave-energy-research-centre/?hl=en"><img src="../static/image/instagram.png" alt="" class="social-media"></a>
+            <a href="https://marineresearch-gs.com/"><img src="../static/image/GSMRF-logo-white-short.png" alt="" width="240" height="35"></a>
+          </div>
+        </div>
+      </div>
+      <div id="footer-2">
+        <div class="container flex flex-column">
+          <div id="footer-2-top">Great Southern Marine Research Facility thanks our supporters</div>
+          <div id="footer-2-bottom">
+            <div class="flex flex-row space-between">
+              <a href="https://www.uwa.edu.au"><img src="../static/image/UWA-1024x336.jpg" alt="" width="245" height="80"></a>
+              <a href="https://dpird.wa.gov.au"><img src="../static/image/DPIRD_fullcolour_blacktext-high-res.png" alt="" width="245" height="80"></a>
+              <a href="https://marineresearch-gs.com/wave-energy-research-centre/"><img src="../static/image/WERC_logo_final.png" alt="" width="245" height="88"></a>
+              <a href="https://imos.org.au/"><img src="../static/image/IMOS_logo-stacked.jpg" alt="" width="150" height="85"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="footer-3">
+        <div class="container flex-row flex">
+          <div id="footer-3-left" class="flex flex-column">
+            <div>CULTURAL</div>
+            <div>ACKNOWLEDGEMENT</div>
+          </div>
+          <div id="footer-3-right">
+            We wish to acknowledge the traditional custodians of the land that Great Southern Marine Research Facility stands upon, the Minang Noongar people. We wish to acknowledge and respect their continuing culture and the contribution they make to the life of
+            this region.
+          </div>
+        </div>
+      </div>
+      <div id="footer-4">
+        © 2021 Great Southern Marine Research Facility - Site by Unbranded Space
+      </div>
+    </div>
+  </footer>
+  <script src="../static/JS/main.js"></script>
+</body>
+
+</html>
